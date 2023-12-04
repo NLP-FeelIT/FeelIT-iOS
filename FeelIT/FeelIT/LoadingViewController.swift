@@ -17,7 +17,16 @@ class LoadingViewController: UIViewController {
         super.viewDidLoad()
         
         self.layout.initViews(superView: self.view)
+        self.view.backgroundColor = .white
         self.layout.img_loading.play()
+        
+        sendrequest(inputtedTextforCalcu: targeted_text)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            print("5초 지남")
+            let nextVC = CalculattedViewController()
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -63,7 +72,7 @@ struct LoadingViewLayout {
         lbl_calcuating.translatesAutoresizingMaskIntoConstraints = false
         lbl_calcuating.text = "분석 중..."
         lbl_calcuating.font = .boldSystemFont(ofSize: 25)
-        lbl_calcuating.textColor = .systemGreen
+        lbl_calcuating.textColor = UIColor(red: 0/255, green: 196/255, blue: 142/255, alpha: 1)
         
         
         lbl_detail.snp.makeConstraints { make in

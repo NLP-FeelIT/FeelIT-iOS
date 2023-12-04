@@ -90,10 +90,31 @@ class MainViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                           action: #selector(tapAction))
         textFieldView.addGestureRecognizer(tapGestureRecognizer)
+        button.addTarget(self, action: #selector(goNext), for: .touchUpInside)
         
-   
+      
+        }
         
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        // 키보드 내리면서 동작
+        textField.resignFirstResponder()
+        return true
     }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+         self.view.endEditing(true)
+    }
+    
+    @objc
+    func goNext() {
+        print(textField.text!)
+        targeted_text = textField.text!
+        let nextVC = LoadingViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
     
     func addSubview() {
         view.addSubview(textFieldView)
