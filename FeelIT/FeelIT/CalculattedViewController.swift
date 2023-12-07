@@ -74,6 +74,9 @@ class CalculattedViewController: UIViewController {
         } else if list.max() == neutralRaw {
             layout.mainFeelingLabel.text = "중립"
             layout.explainTextLabel.text = "전체 내용을 기반으로 분석하였을 때, 텍스트의 전체적인 감정은 중립으로 확인되었습니다."
+        } else if list.max() == sadRaw {
+            layout.mainFeelingLabel.text = "슬픔"
+            layout.explainTextLabel.text = "전체 내용을 기반으로 분석하였을 때, 텍스트의 전체적인 감정은 슬픔으로 확인되었습니다."
         } else if list.max() == happyRaw {
             layout.mainFeelingLabel.text = "행복"
             layout.explainTextLabel.text = "전체 내용을 기반으로 분석하였을 때, 텍스트의 전체적인 감정은 행복으로 확인되었습니다."
