@@ -91,9 +91,8 @@ class MainViewController: UIViewController {
                                                           action: #selector(tapAction))
         textFieldView.addGestureRecognizer(tapGestureRecognizer)
         button.addTarget(self, action: #selector(goNext), for: .touchUpInside)
-        
       
-        }
+    }
         
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool{

@@ -59,6 +59,29 @@ class CalculattedViewController: UIViewController {
         layout.happyLayout.rawValueLabel.text = String(happyRaw)
         layout.disgustLayout.rawValueLabel.text = String(disgustRaw)
         
+        
+        let list = [fearRaw, surprisedRaw, angerRaw, sadRaw, neutralRaw, happyRaw, disgustRaw]
+        
+        if list.max() == fearRaw {
+            layout.mainFeelingLabel.text = "공포"
+            layout.explainTextLabel.text = "전체 내용을 기반으로 분석하였을 때, 텍스트의 전체적인 감정은 공포로 확인되었습니다."
+        } else if list.max() == surprisedRaw {
+            layout.mainFeelingLabel.text = "놀람"
+            layout.explainTextLabel.text = "전체 내용을 기반으로 분석하였을 때, 텍스트의 전체적인 감정은 놀람으로 확인되었습니다."
+        } else if list.max() == angerRaw {
+            layout.mainFeelingLabel.text = "화남"
+            layout.explainTextLabel.text = "전체 내용을 기반으로 분석하였을 때, 텍스트의 전체적인 감정은 화남으로 확인되었습니다."
+        } else if list.max() == neutralRaw {
+            layout.mainFeelingLabel.text = "중립"
+            layout.explainTextLabel.text = "전체 내용을 기반으로 분석하였을 때, 텍스트의 전체적인 감정은 중립으로 확인되었습니다."
+        } else if list.max() == happyRaw {
+            layout.mainFeelingLabel.text = "행복"
+            layout.explainTextLabel.text = "전체 내용을 기반으로 분석하였을 때, 텍스트의 전체적인 감정은 행복으로 확인되었습니다."
+        } else if list.max() == disgustRaw {
+            layout.mainFeelingLabel.text = "역겨움"
+            layout.explainTextLabel.text = "전체 내용을 기반으로 분석하였을 때, 텍스트의 전체적인 감정은 역겨움으로 확인되었습니다."
+        }
+
         // Do any additional setup after loading the view.
     }
     
@@ -165,8 +188,10 @@ struct CalculatedViewLayout {
         targetTextLabel.snp.makeConstraints { make in
             make.left.equalTo(completeLabel)
             make.top.equalTo(calculatedTextLabel.snp.bottom).offset(15)
+            make.right.equalToSuperview().offset(-24)
         }
         targetTextLabel.text = "문장"
+        targetTextLabel.numberOfLines = 0
         targetTextLabel.textColor = .black
         targetTextLabel.font = .systemFont(ofSize: 17)
         
